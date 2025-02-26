@@ -1,0 +1,9 @@
+[submodule "SwinIR"]
+	path = SwinIR
+	url = https://github.com/geminovc/SwinIR
+[submodule "gemino_model"]
+	path = gemino_model
+	url = https://github.com/geminovc/model
+[submodule "lte"]
+	path = lte
+	url = https://github.com/pkarimib/lte
