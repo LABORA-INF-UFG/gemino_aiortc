@@ -15,7 +15,7 @@ git clone --recurse-submodules https://github.com/LABORA-INF-UFG/gemino_aiortc
 
 Setup the conda environment
 ```bash
-conda create -n gemino python=3.9.5
+conda create -n gemino python=3.9.21
 ```
 
 Install conda packages
