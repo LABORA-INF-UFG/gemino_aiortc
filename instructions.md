@@ -34,9 +34,11 @@ Compile `aiortc` code. Replace $USER with your username. Check if the path is co
 sudo /home/$USER/anaconda3/envs/gemino/bin/python3 setup.py install
 ```
 
-Export PYTHONPATH environment var
+Export PYTHONPATH environment var. Replace the $REPO_PATH with your gemino_aiortc location folder.
 ```
-export PYTHONPATH=/home/elton/aiortc/gemino_model:/home/elton/aiortc/SwinIR:/home/elton/aiortc/lte
+export PYTHONPATH=$REPO_PATH/gemino_model:$REPO_PATH/SwinIR:$REPO_PATH/lte
+# example
+export PYTHONPATH=/home/elton/gemino_aiortc/gemino_model:/home/elton/gemino_aiortc/SwinIR:/home/elton/gemino_aiortc/lte
 ```
 
 Get the video of Sundar Pichai to use as sample.
