@@ -24,7 +24,6 @@ venv.bak/
 *.mov
 *.mp4
 *.jpg
-*.txt
 
 # Answer/Offer files
 examples/videostream-cli/answer
