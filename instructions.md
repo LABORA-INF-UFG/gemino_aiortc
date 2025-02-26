@@ -24,14 +24,6 @@ conda activate gemino
 conda install "setuptools <65"
 ```
 
-If you only want to get the model working, skip the next few steps and go directly to the "FOM and Model" section
-
-Compile aiortc
-```bash
-cd aiortc
-sudo python setup.py install
-```
-
 Install python packages
 ```
 python3 -m pip install av==8.1.0 opencv-python face_alignment pyee==8.2.2 protobuf==3.20.0 bitstring pyyaml scikit-image==0.18.3  tensorboardX==2.6.2.2 flow-vis==1.26.4 piq==0.8.0 timm==1.0.15 torchprofile==0.0.4 pandas==2.2.3 lpips==0.1.4
