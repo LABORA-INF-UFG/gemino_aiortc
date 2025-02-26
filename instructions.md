@@ -6,6 +6,7 @@ sudo apt-get install -y libavdevice-dev libavfilter-dev libopus-dev libvpx-dev p
 ```
 
 Install conda
+...
 
 
 Clone the repo and the model submodule
