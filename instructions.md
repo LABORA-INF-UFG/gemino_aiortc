@@ -1,27 +1,27 @@
-# Aiortc installation
-Aiortc dependencies
+# Gemino installation
+OS dependencies
 ```bash
-brew install ffmpeg opus libvpx pkg-config
+sudo apt update
+sudo apt-get install -y libavdevice-dev libavfilter-dev libopus-dev libvpx-dev pkg-config libsrtp2-dev gcc
 ```
 
-Setup conda for MAC. In the interactive installer, agree to the terms, pick a location and initialize conda
-```bash
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-chmod +x Miniconda3-latest-MacOSX-x86_64.sh
-./Miniconda3-latest-MacOSX-x86_64.sh
-rm Miniconda3-latest-MacOSX-x86_64.sh
-```
+Install conda
+
 
 Clone the repo and the model submodule
 ```bash
-git clone --recurse-submodules https://github.com/vibhaa/aiortc.git
+git clone --recurse-submodules https://github.com/LABORA-INF-UFG/gemino_aiortc
 ```
 
-Setup the conda environment and if need be, install some packages using pip because conda package doesn't work
+Setup the conda environment
 ```bash
-conda create --name fom --file aiortc/nets_implementation/first_order_model/fom_mac.txt
-conda activate fom
-pip install av opencv-python face_alignment
+conda create -n gemino python=3.9.5
+```
+
+Install conda packages
+```bash
+conda activate gemino
+conda install "setuptools <65"
 ```
 
 If you only want to get the model working, skip the next few steps and go directly to the "FOM and Model" section
@@ -32,8 +32,22 @@ cd aiortc
 sudo python setup.py install
 ```
 
-To check that it actually works, we will run an example `videostream` command line program wherein a sender streams a video of Sundar Pichai and the receiver records it.
-First get a video of Sundar Pichai to use as sample.
+Install python packages
+```
+python3 -m pip install av==8.1.0 opencv-python face_alignment pyee==8.2.2 protobuf==3.20.0 bitstring pyyaml scikit-image==0.18.3  tensorboardX==2.6.2.2 flow-vis==1.26.4 piq==0.8.0 timm==1.0.15 torchprofile==0.0.4 pandas==2.2.3 lpips==0.1.4
+```
+
+Compile `aiortc` code. Replace $USER with your username
+```
+sudo /home/$USER/anaconda3/env/fom/bin/python3 setup.py install
+```
+
+Export PYTHONPATH environment var
+```
+export PYTHONPATH=/home/elton/aiortc/gemino_model:/home/elton/aiortc/SwinIR:/home/elton/aiortc/lte
+```
+
+Get the video of Sundar Pichai to use as sample.
 ```bash
 pip install -U youtube-dl
 youtube-dl https://www.youtube.com/watch\?v\=gEDChDOM1_U\&vl\=en -o examples/videostream-cli/sundar_pichai.mp4
@@ -50,6 +64,7 @@ Run the receiver in other terminal (this connects to the receiver's unix socket)
 cd examples/videostream-cli
 python cli.py answer --record-to sundar_pichai_recorded.mp4 --signaling-path /tmp/test.sock --signaling unix-socket --verbose 2>receiver_output
 ```
+---
 
 **MODIFICATIONS:** The expected output right now is just three lines corresponding to receiving video, audio and keypoints since there is a bug in the main branch (and no video is recorded). 
 
