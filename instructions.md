@@ -6,7 +6,14 @@ sudo apt-get install -y libavdevice-dev libavfilter-dev libopus-dev libvpx-dev p
 ```
 
 Install conda
-...
+
+Download and install Anaconda from:
+[Anaconda Distribution](https://www.anaconda.com/products/distribution)
+
+Once downloaded, navigate to the directory where the `.sh` file is located and run:
+```bash
+bash Anaconda3-2024.10-1-Linux-x86_64.sh
+```
 
 
 Clone the repo and the model submodule
@@ -44,8 +51,9 @@ export PYTHONPATH=/home/elton/gemino_aiortc/gemino_model:/home/elton/gemino_aior
 
 Get the video of Sundar Pichai to use as sample.
 ```bash
-pip install -U youtube-dl
-youtube-dl https://www.youtube.com/watch\?v\=gEDChDOM1_U\&vl\=en -o examples/videostream-cli/sundar_pichai.mp4
+pip install -U yt-dlp
+cd aiortc
+yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]" "https://www.youtube.com/watch?v=gEDChDOM1_U&vl=en" -o "examples/videostream-cli/sundar_pichai.mp4"
 ```
 
 Run the sender in one terminal (this opens a unix socket connection and waits for receiver to connect)
