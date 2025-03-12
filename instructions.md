@@ -1,4 +1,6 @@
 # Gemino installation
+The OS used in this guide was the Ubuntu 20.04.
+
 OS dependencies
 ```bash
 sudo apt update
